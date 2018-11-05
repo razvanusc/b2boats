@@ -1,0 +1,7 @@
+<h1>Add a boat</h1>
+
+<%= simple_form_for([@user, @boat]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
