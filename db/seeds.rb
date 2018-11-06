@@ -20,9 +20,9 @@
 
 puts "Seeding..."
 
-User.destroy_all
+Booking.destroy_all
 Boat.destroy_all
-
+User.destroy_all
 
 user = User.create!(first_name: "Bob", last_name: "Sponge", email: "sponge@gmail.com", password: "123secret")
 user2 = User.create!(first_name: "Moby", last_name: "Dick", email: "moby@gmail.com", password: "123secret")
@@ -72,3 +72,11 @@ boat3 = Boat.create!(
   capacity: 20,
   has_license: false,
   user_id: user3.id)
+
+booking1 = Booking.create!(
+  user_id: user3.id,
+  boat_id: boat3.id,
+  status: 0,
+  start_time: 1.month.from_now,
+  end_time: 2.month.from_now
+  )

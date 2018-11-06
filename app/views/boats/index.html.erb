@@ -4,9 +4,11 @@
 <div class="card">
   <ul><% @boats.each do |boat| %>
     <div class="col-xs-12 col-sm-6">
-      <li><p>Name of the boat: <%= boat.name %></p>
+      <li><p>Name of the boat: </p>
+        <%= link_to boat.name, boat_path(boat) %>
           <p>Description: <%= boat.description %></p>
           <p>Price per hour: <%= boat.price_per_hour %></p>
+          <p><%= link_to "Reserve this boat", boat_path(boat)%></p>
         </li>
       </div>
       <% end %>

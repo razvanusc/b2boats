@@ -1,5 +1,6 @@
 class Boat < ApplicationRecord
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   belongs_to :user
 
   validates :name, presence:true, uniqueness: true
