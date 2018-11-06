@@ -1,6 +1,14 @@
-<%= @boat.name %>
-<%= @boat.description %>
-<%= @boat.user %>
+<ul>
+  <li><%= @boat.name %></li>
+  <li><%= @boat.description %></li>
+  <li><%= @boat.price_per_hour %></li>
+  <li><%= @boat.hours %></li>
+  <li><%= @boat.capacity %></li>
+  <li><%= @boat.has_license %></li>
+</ul>
+<!--
+<%= @boat.user %> -->
+
 
 <%= link_to "", boat_path(@boat),
     method: :delete,
