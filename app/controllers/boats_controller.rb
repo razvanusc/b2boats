@@ -26,7 +26,7 @@ class BoatsController < ApplicationController
     @boat.save!
 
     if @boat.save
-      redirect_to user_boats_path
+      redirect_to boats_path
     else
       render :new
     end

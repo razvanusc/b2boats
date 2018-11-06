@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+   @user = User.find(params[:id])
+   @user.destroy
+   redirect_to boats_path
+ end
+
   private
 
   def user_params

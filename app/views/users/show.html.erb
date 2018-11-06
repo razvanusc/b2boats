@@ -7,8 +7,9 @@
 <p> Here comes a list of the boats, TO BE ADDED
 </p>
 
-<p> BELOW LINK PATH NEEDS TO BE EDITED! </p>
-<%= link_to "Back to boats",  @user_boats_path%>
-<p> ADD A BOAT LINK IS MISSING! </p>
+<p> <%= link_to "Add a boat", new_boat_path %> </p>
 
+<p><%= link_to "Back to boats",  boats_path%> </p>
 
+<hr>
+<p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}%></p>
