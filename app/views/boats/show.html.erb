@@ -1,5 +1,35 @@
-<%= @boat.name %>
-<%= @boat.description %>
-<%= link_to "", user_boat_path(@boat),
+<ul>
+  <li><p><%= @boat.name %></p>
+  <p><%= @boat.description %></p>
+  <p><%= @boat.price_per_hour %></p>
+  <p><%= @boat.hours %></p>
+  <p><%= @boat.capacity %></p>
+  <p><%= @boat.has_license %></p></li>
+</ul>
+<!--
+<%= @boat.user %> -->
+
+
+<%= link_to "", boat_path(@boat),
     method: :delete,
     data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+
+<%= link_to "Edit", edit_boat_path(@boat)%>
+
+<%= link_to "Back to list", boats_path%>
+
+<ul>
+<% @boat.reviews.each do |review| %>
+  <li>
+    <%= review.title %>
+    <%= review.content %>
+    <%= review.rating %>
+    <%= link_to "", boat_review_path(@boat, review),
+    method: :delete,
+    data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add a review", new_boat_review_path(@boat)%>
