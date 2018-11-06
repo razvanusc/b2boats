@@ -37,7 +37,7 @@ boat = Boat.create!(
   price_per_hour: 10,
   hours: 2,
   capacity: 200,
-  has_license: false,
+  has_license: true,
   user_id: user.id)
 
 extra_boat = Boat.create!(
