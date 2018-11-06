@@ -8,3 +8,16 @@
   <% end %>
   </ul>
 </div>
+<h1>List of boats</h1>
+
+<ul><% @boats.each do |boat| %>
+
+  <li><p>Name of the boat: <%= boat.name %></p> <p>Description: <%= boat.description %></p>
+    <p>Price per hour: <%= boat.price_per_hour %></p></li>
+
+<% end %>
+
+</ul>
+
+<%= link_to "Add a boat", new_user_boat_path %>
+

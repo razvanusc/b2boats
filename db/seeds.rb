@@ -17,18 +17,21 @@
 
   # user = User.create(first_name: "Jack", last_name: "Sparrow", email: "jacksparrow@gmail.com",
   #   password: "jacksparrow1008")
-  puts "Seeding..."
 
-  User.destroy_all
-  Boat.destroy_all
 
-  user = User.create!(first_name: "Bob", last_name: "Sponge", email: "sponge@gmail.com", password: "123secret")
-  user2 = User.create!(first_name: "Moby", last_name: "Dick", email: "moby@gmail.com", password: "123secret")
-  user3 = User.create!(first_name: "Jack", last_name: "Sparrow", email: "sparrow@gmail.com", password: "123secret")
+puts "Seeding..."
 
- # Boat.destroy!
+User.destroy_all
+Boat.destroy_all
 
- boat = Boat.create!(
+
+user = User.create!(first_name: "Bob", last_name: "Sponge", email: "sponge@gmail.com", password: "123secret")
+user2 = User.create!(first_name: "Moby", last_name: "Dick", email: "moby@gmail.com", password: "123secret")
+user3 = User.create!(first_name: "Jack", last_name: "Sparrow", email: "sparrow@gmail.com", password: "123secret")
+
+# Boat.destroy!
+
+boat = Boat.create!(
   name: "Titanic",
   description: "Boat to rent",
   location: "Amsterdam",
@@ -38,7 +41,8 @@
   has_license: false,
   user_id: user.id)
 
- extra_boat = Boat.create!(
+
+extra_boat = Boat.create!(
   name: "Katamaran",
   description: "Splendid Boat to rent",
   location: "Amsterdam",
@@ -48,7 +52,8 @@
   has_license: false,
   user_id: user.id)
 
- boat2 = Boat.create!(
+
+boat2 = Boat.create!(
   name: "Sailboat",
   description: "Boat for rent",
   location: "Amsterdam",
@@ -58,7 +63,7 @@
   has_license: true,
   user_id: user2.id)
 
- boat3 = Boat.create!(
+boat3 = Boat.create!(
   name: "Singel",
   description: "Great Boat for rent",
   location: "Haarlem",
