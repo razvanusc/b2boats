@@ -23,8 +23,6 @@ class BoatsController < ApplicationController
 
     @boat.user = current_user
 
-    @boat.save!
-
     if @boat.save
       redirect_to boats_path
     else
