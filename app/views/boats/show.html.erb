@@ -1,5 +1,7 @@
 <%= @boat.name %>
 <%= @boat.description %>
+<%= @boat.user %>
+
 <%= link_to "", boat_path(@boat),
     method: :delete,
     data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
