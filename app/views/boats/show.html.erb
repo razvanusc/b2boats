@@ -1,5 +1,11 @@
 <%= @boat.name %>
 <%= @boat.description %>
-<%= link_to "", user_boat_path(@boat),
+<%= @boat.user %>
+
+<%= link_to "", boat_path(@boat),
     method: :delete,
     data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+
+<%= link_to "Edit", edit_boat_path(@boat)%>
+
+<%= link_to "Back to list", boats_path%>
