@@ -7,3 +7,19 @@
 <%= link_to "Edit", edit_boat_path(@boat)%>
 
 <%= link_to "Back to list", boats_path%>
+
+<ul>
+<% @boat.reviews.each do |review| %>
+  <li>
+    <%= review.title %>
+    <%= review.content %>
+    <%= review.rating %>
+    <%= link_to "", boat_review_path(@boat, review),
+    method: :delete,
+    data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "Add a review", new_boat_review_path(@boat)%>

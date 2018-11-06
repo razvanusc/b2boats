@@ -26,7 +26,7 @@ class BoatsController < ApplicationController
     @boat.save!
 
     if @boat.save
-      redirect_to user_boats_path
+      redirect_to boats_path
     else
       render :new
     end
@@ -45,7 +45,7 @@ class BoatsController < ApplicationController
   def destroy
     @boat = Boat.find(params[:id])
     @boat.destroy
-    redirect_to user_boats_path
+    redirect_to boats_path
   end
 
   def boat_params
