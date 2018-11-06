@@ -1,3 +1,17 @@
 <%= render "shared/banner" %>
 
-
+<h1 class="main-container">List of boats</h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path 'download.jpeg' %>);">
+      <div class="card-category">Popular</div>
+      <div class="card-description">Boat</div>
+      <ul><% @boats.each do |boat| %>
+        <li><p>Name of the boat: <%= boat.name %></p> <p>Description: <%= boat.description %></p>
+        <p>Price per hour: <%= boat.price_per_hour %></p></li>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+  <a class="card-link" href="#" ></a>
+</div>
