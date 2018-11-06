@@ -2,11 +2,13 @@
 
 <ul><% @boats.each do |boat| %>
 
-  <li><p>Name of the boat: <%= boat.name %></p> <p>Description: <%= boat.description %></p>
+  <li><p><%= link_to "#{boat.name}", boat_path(boat)%></p> <p>Description: <%= boat.description %></p>
     <p>Price per hour: <%= boat.price_per_hour %></p></li>
 
 <% end %>
 
 </ul>
 
-<%= link_to "Add a boat", new_user_boat_path %>
+<%= link_to "Add a boat", new_boat_path %>
+
+
