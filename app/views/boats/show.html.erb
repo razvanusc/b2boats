@@ -12,7 +12,7 @@
   <div class="grid-item3 grid-item">
     <!-- Boat Description -->
     <div class="details-title">
-    <h1>Boat details</h1>
+    <h1 class="show-title">Boat details</h1>
     </div>
     <ul>
       <li>
@@ -36,7 +36,7 @@
   <div class="grid-item4 grid-item">
     <!-- Booking Details -->
 
-    <h1 class="book-details">Booking details</h1>
+    <h1 class="book-details show-title">Booking details</h1>
     <ul>
       <% @boat.bookings.each do |booking| %>
       <li>
@@ -55,7 +55,7 @@
   </div>
   <div class="grid-item5 grid-item">
     <!-- Boat Reviews -->
-    <h1>Boat reviews</h1>
+    <h1 class="show-title">Boat reviews</h1>
     <ul>
       <% @boat.reviews.each do |review| %>
       <li>
