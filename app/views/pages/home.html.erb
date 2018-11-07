@@ -1,3 +1,12 @@
 <%= render "shared/banner" %>
 
-<%= render "shared/card" %>
+<h2>List of Boats</h2>
+<div class="container">
+ <div class="row">
+   <% @boats.each do |b| %>
+     <div class="col-xs-12 col-md-4">
+       <%= render "shared/card", name: b.name, link: boat_path(b) %>
+     </div>
+   <% end %>
+ </div>
+</div>
