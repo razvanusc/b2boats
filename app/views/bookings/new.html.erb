@@ -1,0 +1,8 @@
+<h1>Reserve your boat: <%= @boat.name %></h1>
+
+ <%= simple_form_for([@boat, @booking]) do |f| %>
+   <%= f.input :start_time%>
+   <%= f.input :end_time %>
+   <%= f.submit %>
+ <% end %>
+

@@ -13,3 +13,15 @@
 
 <hr>
 <p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}%></p>
+
+<h3>Bookings </h3>
+
+<div>
+  <% @bookings.each do |booking| %>
+  <p><%= booking.id %></p>
+  <p><%= booking.start_time %></p>
+  <p><%= booking.end_time %></p>
+  <p><%= booking.status %></p>
+  <p> <%= link_to "Edit this booking", edit_booking_path(booking) %></p>
+  <% end %>
+</div>

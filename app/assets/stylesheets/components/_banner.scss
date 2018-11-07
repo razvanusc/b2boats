@@ -3,9 +3,22 @@
   width: 300px;
   height: 100px;
   text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.home-page-banner-button {
+  text-align: center;
+  background-color: #02CBE1;
+  padding-top: 70px;
+  height: 480px;
 }
 
 .banner-title{
   text-align: center;
   color: white;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-size: 50px;
 }
+

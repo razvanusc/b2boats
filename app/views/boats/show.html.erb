@@ -1,11 +1,55 @@
-<%= @boat.name %>
-<%= @boat.description %>
-<%= @boat.user %>
+<!-- Boat Description -->
+<h2>Boat details:</h2>
+<ul>
+  <li><p>Name: <%= @boat.name %></p>
+  <p>Description: <%= @boat.description %></p>
+  <p>Price per hour: <%= @boat.price_per_hour %></p>
+  <p>Rental hours: <%= @boat.hours %></p>
+  <p>Capacity: <%= @boat.capacity %></p>
+  <p>License needed? <%= @boat.has_license %></p></li>
+</ul>
 
-<%= link_to "", boat_path(@boat),
-    method: :delete,
-    data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+<!-- Boat Links (edit, delete, index page) -->
 
-<%= link_to "Edit", edit_boat_path(@boat)%>
+<p> <%= link_to "", boat_path(@boat),
+  method: :delete,
+  data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+<%= link_to "Edit Boat", edit_boat_path(@boat)%></p>
+<p><%= link_to "Back to list", boats_path%></p>
 
-<%= link_to "Back to list", boats_path%>
+<!-- Booking Details -->
+
+<h2>Booking details:</h2>
+<ul>
+  <% @boat.bookings.each do |booking| %>
+    <li>
+      <p> Status: <%= booking.status %> </p>
+      <p> Available from: <%= booking.start_time %> </p>
+      <p> Available until: <%= booking.end_time %> </p>
+      <p> <%= link_to "Edit this booking", edit_booking_path(booking) %></p>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Booking links -->
+
+<p><%= link_to "Reserve this boat", new_boat_booking_path(@boat)  %></p>
+
+
+
+<!-- Boat Reviews -->
+<h2>Boat reviews:</h2>
+<ul>
+  <% @boat.reviews.each do |review| %>
+    <li>
+      <%= review.title %>
+      <%= review.content %>
+      <%= review.rating %>
+      <%= link_to "", boat_review_path(@boat, review),
+      method: :delete,
+      data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a review", new_boat_review_path(@boat)%>
