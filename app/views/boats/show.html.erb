@@ -1,55 +1,73 @@
-<!-- Boat Description -->
-<h2>Boat details:</h2>
-<ul>
-  <li><p>Name: <%= @boat.name %></p>
-  <p>Description: <%= @boat.description %></p>
-  <p>Price per hour: <%= @boat.price_per_hour %></p>
-  <p>Rental hours: <%= @boat.hours %></p>
-  <p>Capacity: <%= @boat.capacity %></p>
-  <p>License needed? <%= @boat.has_license %></p></li>
-</ul>
+<div class="grid-container">
+  <div class="grid-item1 grid-item">
+    <div class="name-image">
+    <p class="boat-name"><%= @boat.name %></p>
+    </div>
+  </div>
 
-<!-- Boat Links (edit, delete, index page) -->
+  <div class="grid-item2 grid-item">
+    <h3>Description: <%= @boat.description %></h3>
+  </div>
 
-<p> <%= link_to "", boat_path(@boat),
-  method: :delete,
-  data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
-<%= link_to "Edit Boat", edit_boat_path(@boat)%></p>
-<p><%= link_to "Back to list", boats_path%></p>
+  <div class="grid-item3 grid-item">
+    <!-- Boat Description -->
+    <div class="details-title">
+    <h1>Boat details</h1>
+    </div>
+    <ul>
+      <li>
+        <p>Price per hour: <%= @boat.price_per_hour %></p>
+        <p>Rental hours: <%= @boat.hours %></p>
+        <p>Capacity: <%= @boat.capacity %></p>
+        <p>License needed? <%= @boat.has_license %></p>
+      </li>
+    </ul>
 
-<!-- Booking Details -->
+    <!-- Boat Links (edit, delete, index page) -->
 
-<h2>Booking details:</h2>
-<ul>
-  <% @boat.bookings.each do |booking| %>
-    <li>
-      <p> Status: <%= booking.status %> </p>
-      <p> Available from: <%= booking.start_time %> </p>
-      <p> Available until: <%= booking.end_time %> </p>
-      <p> <%= link_to "Edit this booking", edit_booking_path(booking) %></p>
-    </li>
-  <% end %>
-</ul>
+    <p>
+    <%= link_to "Edit", edit_boat_path(@boat), class: "boat-btn"%>
+    <%= link_to "Back to list", boats_path, class: "boat-btn"%>
+    <%= link_to "Delete", boat_path(@boat),
+    method: :delete,
+    data: { confirm: "Are you sure?" }, class: "boat-btn"%>
+  </p>
+  </div>
+  <div class="grid-item4 grid-item">
+    <!-- Booking Details -->
 
-<!-- Booking links -->
+    <h1 class="book-details">Booking details</h1>
+    <ul>
+      <% @boat.bookings.each do |booking| %>
+      <li>
+        <p> Status: <%= booking.status %> </p>
 
-<p><%= link_to "Reserve this boat", new_boat_booking_path(@boat)  %></p>
+        <p> Available from: <%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></p>
 
+        <p> Available until: <%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+      </li>
+      <% end %>
+    </ul>
+    <div class="btn-details">
+      <%= link_to "Edit", edit_booking_path(@boat.bookings), class: "boat-btn"%>
+      <%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%>
+    </div>
+  </div>
+  <div class="grid-item5 grid-item">
+    <!-- Boat Reviews -->
+    <h1>Boat reviews</h1>
+    <ul>
+      <% @boat.reviews.each do |review| %>
+      <li>
+        <%= review.title %> <%= link_to "", boat_review_path(@boat, review),
+        method: :delete,
+        data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %><br>
+        <%= review.content %>
+        <%= review.rating %>
+      </li>
+      <% end %>
+    </ul>
 
-
-<!-- Boat Reviews -->
-<h2>Boat reviews:</h2>
-<ul>
-  <% @boat.reviews.each do |review| %>
-    <li>
-      <%= review.title %>
-      <%= review.content %>
-      <%= review.rating %>
-      <%= link_to "", boat_review_path(@boat, review),
-      method: :delete,
-      data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "Add a review", new_boat_review_path(@boat)%>
+    <%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%>
+  </div>
+</div>

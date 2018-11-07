@@ -46,6 +46,7 @@ class BoatsController < ApplicationController
     redirect_to boats_path
   end
 
+
   def boat_params
     params.require(:boat).permit(:name, :description, :location, :price_per_hour,
       :hours, :capacity, :has_license)

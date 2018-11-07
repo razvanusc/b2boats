@@ -10,15 +10,15 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Contact", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "About", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Add your boat", new_boat_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "All boats", boats_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "home_page_avatar.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
+   <!--          <li>
               <%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
@@ -28,7 +28,7 @@
                 <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
             </li>
-            <li>
+            <li> -->
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
@@ -48,8 +48,10 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">About</a></li>
+    <!--     <li><a href="#">Contact</a></li>
+        <li><a href="#">About</a></li> -->
+        <li> <%= link_to "All boats", boats_path %> </li>
+        <li><%= link_to "Add your boat", new_boat_path%></li>
       </ul>
     </div>
   </div>

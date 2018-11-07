@@ -1,0 +1,87 @@
+.grid-container {
+  display: grid;
+  grid-gap: 20px 20px;
+  grid-template-columns: 400px 1fr 1fr 1fr;
+  grid-template-rows: 50% 25% 25%;
+  margin: 100px 50px;
+}
+
+.grid-item {
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+.grid-item1 {
+  grid-row: 1 / span 3;
+  grid-column: 1 / span 1;
+  text-align: center;
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.3) 50%), url("https://funamsterdam.com/wp-content/uploads/2015/09/Vibe.jpg");
+  background-size: cover;
+}
+
+.grid-item2 {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 3;
+  padding: 0 10px;
+}
+
+.grid-item3 {
+  grid-row: 1/ span 2;
+  grid-column: 2 / span 1;
+  text-align: center;
+}
+
+.grid-item4 {
+  grid-row: 1/ span 2;
+  grid-column: 3 / span 1;
+  text-align: center;
+}
+
+.grid-item5 {
+  grid-row: 1/ span 2;
+  grid-column: 4 / span 1;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 10px 20px;
+}
+
+h1 {
+  background-color: #02CBE1;
+  color: white;
+  margin-top: 0;
+  padding: 20px;
+  font-size: 35px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.name-image{
+  margin-top: 5px;
+}
+
+.boat-name {
+  font-size: 45px;
+  color: white;
+}
+
+.boat-btn {
+  color: white;
+  background-color: #02CBE1;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.btn-details {
+  margin-bottom: 25px;
+}
+
+.book-details {
+
+}
