@@ -4,24 +4,34 @@
 <p><%= @user.last_name %></p>
 
 
-<p> Here comes a list of the boats, TO BE ADDED
-</p>
-
-<p> <%= link_to "Add a boat", new_boat_path %> </p>
-
-<p><%= link_to "Back to boats",  boats_path%> </p>
-
-<hr>
-<p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}%></p>
-
-<h3>Bookings </h3>
-
-<div>
-  <% @bookings.each do |booking| %>
-  <p><%= booking.id %></p>
-  <p><%= booking.start_time %></p>
-  <p><%= booking.end_time %></p>
-  <p><%= booking.status %></p>
-  <p> <%= link_to "Edit this booking", edit_booking_path(booking) %></p>
-  <% end %>
+<h3 class="booking-title">Bookings</h3>
+<div class="table-container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.id %></td>
+          <td><%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></td>
+          <td><%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %></td>
+          <td><%= booking.status %></td>
+          <td><%= link_to "Edit this booking", edit_booking_path(booking) %></td>
+        </tr>
+            <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<p><%= link_to "Back to boats",  boats_path, class: "booking-btn"%> </p>
+
+<p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}, class: "booking-btn"%></p>
