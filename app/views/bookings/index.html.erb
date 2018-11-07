@@ -1,0 +1,30 @@
+<h2>List of Bookings</h2>
+<div class="table-container">
+ <div class="row">
+  <table class="table">
+  <tr>
+    <th>Booking Id</th>
+    <th>Boat Name</th>
+    <th>Status</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Action</th>
+  </tr>
+</table>
+   <% @bookings.each do |b| %>
+ <table class="table">
+    <tr>
+      <td> <%= b.id %> </td>
+      <td> <%= b.boat.name %> </td>
+      <td><span id="pending"> <%= b.status %> </span></td>
+      <td> <%= b.start_time.strftime("%Y-%m-%d (%H:%M)") %> </td>
+      <td> <%= b.end_time.strftime("%Y-%m-%d (%H:%M)") %></td>
+      <td> <%= link_to "Confirm", edit_booking_path(b), style: 'color:red;' %>
+      </td>
+    </tr>
+    </table>
+   <% end %>
+ </div>
+ <%= link_to "Back to boats", boats_path%>
+</div>
+
