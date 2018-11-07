@@ -1,9 +1,9 @@
 <h1>Add a boat</h1>
 
-<%= simple_form_for([@user, @boat]) do |f| %>
+<%= simple_form_for(@boat) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.submit %>
 <% end %>
 
-<%= link_to "Back to list",  user_boats_path%>
+<%= link_to "Back to list",  boats_path%>
