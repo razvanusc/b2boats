@@ -25,12 +25,11 @@
 
     <!-- Boat Links (edit, delete, index page) -->
 
-    <p>
-    <%= link_to "Edit", edit_boat_path(@boat), class: "boat-btn"%>
-    <%= link_to "Back to list", boats_path, class: "boat-btn"%>
-    <%= link_to "Delete", boat_path(@boat),
+    <p class="boat-p"><%= link_to "Edit", edit_boat_path(@boat), class: "boat-btn"%></p>
+    <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
+    <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
     method: :delete,
-    data: { confirm: "Are you sure?" }, class: "boat-btn"%>
+    data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
   </p>
   </div>
   <div class="grid-item4 grid-item">
@@ -49,8 +48,8 @@
       <% end %>
     </ul>
     <div class="btn-details">
-      <%= link_to "Edit", edit_booking_path(@boat.bookings), class: "boat-btn"%>
-      <%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%>
+      <p class="boat-p"><%= link_to "Edit", edit_booking_path(@boat.bookings), class: "boat-btn"%></p>
+      <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
     </div>
   </div>
   <div class="grid-item5 grid-item">
@@ -68,6 +67,6 @@
       <% end %>
     </ul>
 
-    <%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%>
+    <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
   </div>
 </div>
