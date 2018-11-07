@@ -51,7 +51,7 @@ ul {
 }
 
 .show-title {
-  background-color: #02CBE1;
+  background-color: #01B6CA;
   color: white;
   margin-top: 0;
   padding: 20px;
@@ -73,9 +73,19 @@ h3 {
 
 .boat-btn {
   color: white;
-  background-color: #02CBE1;
+  background-color: #01B6CA;
   padding: 10px 20px;
   border-radius: 10px;
+  text-decoration: none;
+}
+
+.boat-btn:hover {
+  color: #025578;
+  text-decoration: none;
+}
+
+.boat-p {
+  margin-bottom: 40px;
 }
 
 .btn-details {
