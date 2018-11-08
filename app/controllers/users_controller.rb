@@ -2,7 +2,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @bookings = @user.bookings
+    if params[:show]
+      @bookings = @user.bookings.where(status: params[:show])
+    else
+      @bookings =@user.bookings
+    end
   end
 
   def edit
