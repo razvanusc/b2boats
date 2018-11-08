@@ -10,6 +10,15 @@ class BoatsController < ApplicationController
 
   def show
     @boat = Boat.find(params[:id])
+
+    @boat.geocode
+
+    @markers = [
+      {
+        lat: @boat.latitude,
+        lng: @boat.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }]
   end
 
   def new
@@ -20,6 +29,7 @@ class BoatsController < ApplicationController
     @boat = Boat.new(boat_params)
 
     @boat.user = current_user
+
 
     if @boat.save
       redirect_to boats_path
@@ -47,6 +57,6 @@ class BoatsController < ApplicationController
 
   def boat_params
     params.require(:boat).permit(:name, :description, :location, :price_per_hour,
-      :hours, :capacity, :has_license, :photo)
+      :hours, :capacity, :has_license, :photo, :latitude, :longitude)
   end
 end
