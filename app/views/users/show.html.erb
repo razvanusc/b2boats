@@ -1,37 +1,75 @@
-<h2>User show page</h2>
+<div class="wrapper-light">
+  <h2>Hello <%= @user.first_name%>!</h2>
+  <div class="main-container grid-container user-bin">
+    <div id="profile-bin">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm'/>
+      <p>First name: <%= @user.first_name%></p>
+      <p>Last name: <%= @user.last_name%></p>
+      <p>Email: <%= @user.email%></p>
+      <% @user.boats.each do |boat| %>
+      <p>Boat id: <%= boat.id %> Boat name: <%= boat.name %> </p>
+      <% end %>
+      <p><%= link_to "Back to boats",  boats_path, class: "booking-btn"%> </p>
+      <p><%= link_to "Add a boat",  new_boat_path, class: "booking-btn"%> </p>
+      <p><%= link_to "Edit user",  edit_user_path(@user), class: "booking-btn"%> </p>
+      <p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}, class: "booking-btn"%></p>
+    </div>
+    <div class="container booking-bin">
+      <div class="row">
+        <div class="col-xs-12 booking-title">
+          <h3>Your Bookings</h3>
+        </div>
+      </div>
+      <div class="row booking-header">
+        <div class="col col-xs-4">
+          <%= link_to "Pending", user_path(@user, show:"pending"), class: "status-btn" %>
+        </div>
+        <div class="col col-xs-4">
+            <%= link_to "Confirmed", user_path(@user, show:"confirmed"), class: "status-btn" %>
+        </div>
+        <div class="col col-xs-4">
+            <%= link_to "Cancelled", user_path(@user, show:"cancelled"), class: "status-btn" %>
+        </div>
+      </div>
 
-<p><%= @user.first_name %></p>
-<p><%= @user.last_name %></p>
+      <% @bookings.each do |b| %>
 
+      <div class="row booking-body space">
+        <div class="col col-xs-12 booking-col">
+          <div class="long-card">
 
-<h3 class="booking-title">Bookings</h3>
-<div class="table-container">
-  <div class="row">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Booking ID</th>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th>Status</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.id %></td>
-          <td><%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></td>
-          <td><%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %></td>
-          <td><%= booking.status %></td>
-          <td><%= link_to "Edit this booking", edit_booking_path(booking) %></td>
-        </tr>
-            <% end %>
-      </tbody>
-    </table>
+            <div class="book-id">
+              <p class="hd"> Booking Id </p>
+              <p> <%= b.id %> </p>
+            </div>
+            <div class= "book-name">
+              <p class="hd"> Boat Name</p>
+              <p><%= b.boat.name %> </p>
+            </div>
+            <div class= "book-start">
+              <p class="hd"> Start time</p>
+              <p><%= b.start_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+            </div>
+            <div class= "book-end">
+              <p class="hd"> End time</p>
+              <p><%= b.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+            </div>
+            <div class= "book-price">
+              <p class="hd"> Price (€)</p>
+              <p><%= b.boat.price_per_hour %> </p>
+            </div>
+            <div>
+              <%= link_to "Update", edit_booking_path(b), class:"book-btn"%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <%end %>
+
+    </div>
   </div>
 </div>
 
-<p><%= link_to "Back to boats",  boats_path, class: "booking-btn"%> </p>
 
-<p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}, class: "booking-btn"%></p>
+
