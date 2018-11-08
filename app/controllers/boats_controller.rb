@@ -3,8 +3,6 @@ class BoatsController < ApplicationController
     if user_id = params[:user_id]
       @user = User.find(user_id)
       @boats = @user.boats
-
-      # @boats = Boat.where(user_id: user_id)
     else
       @boats = Boat.all
     end
@@ -49,6 +47,6 @@ class BoatsController < ApplicationController
 
   def boat_params
     params.require(:boat).permit(:name, :description, :location, :price_per_hour,
-      :hours, :capacity, :has_license)
+      :hours, :capacity, :has_license, :photo)
   end
 end

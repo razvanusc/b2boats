@@ -1,7 +1,10 @@
 <div class="grid-container">
   <div class="grid-item1 grid-item">
-    <div class="name-image">
-    <p class="boat-name"><%= @boat.name %></p>
+    <div class="name-image" >
+    <p class="boat-name" ><%= @boat.name %></p>
+    <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
+    <p><%= @boat.user %></p>
+    <p><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></p>
     </div>
   </div>
 
