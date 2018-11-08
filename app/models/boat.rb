@@ -15,4 +15,8 @@ class Boat < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def rating
+    (reviews.average(:rating) || 1).round
+  end
 end
