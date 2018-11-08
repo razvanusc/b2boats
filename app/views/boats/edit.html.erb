@@ -3,6 +3,12 @@
 <%= simple_form_for(@boat) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :price_per_hour  %>
+  <%= f.input :hours  %>
+  <%= f.input :capacity  %>
+  <%= f.input :category  %>
+  <%= f.input :rating  %>
+  <%= f.input :has_license, as: :radio_buttons%>
   <%= f.submit %>
 <% end %>
 
