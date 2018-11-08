@@ -1,30 +1,66 @@
-<h2>List of Bookings</h2>
-<div class="table-container">
- <div class="row">
-  <table class="table">
-  <tr>
-    <th>Booking Id</th>
-    <th>Boat Name</th>
-    <th>Status</th>
-    <th>Start</th>
-    <th>End</th>
-    <th>Action</th>
-  </tr>
-</table>
-   <% @bookings.each do |b| %>
- <table class="table">
-    <tr>
-      <td> <%= b.id %> </td>
-      <td> <%= b.boat.name %> </td>
-      <td><span id="pending"> <%= b.status %> </span></td>
-      <td> <%= b.start_time.strftime("%Y-%m-%d (%H:%M)") %> </td>
-      <td> <%= b.end_time.strftime("%Y-%m-%d (%H:%M)") %></td>
-      <td> <%= link_to "Confirm", edit_booking_path(b), style: 'color:red;' %>
-      </td>
-    </tr>
-    </table>
-   <% end %>
- </div>
- <%= link_to "Back to boats", boats_path%>
-</div>
+<div class="wrapper-light">
+<h2 class="booking-h2">List of Bookings</h2>
+<!--   <div class="application-controller"> -->
+    <div class="container">
 
+    <div class="container booking-bin">
+    <!--   <div class="row">
+        <div class="col-xs-12 booking-title">
+          <h3 class="show-h2">All Bookings</h3>
+        </div>
+      </div> -->
+  <!--     <div class="row booking-header">
+        <div class="col col-xs-4">
+          <%= link_to "Pending", user_path(current_user, show:"pending"), class: "status-btn" %>
+        </div>
+        <div class="col col-xs-4">
+            <%= link_to "Confirmed", user_path(current_user, show:"confirmed"), class: "status-btn" %>
+        </div>
+        <div class="col col-xs-4">
+            <%= link_to "Cancelled", user_path(current_user, show:"cancelled"), class: "status-btn" %>
+        </div>
+      </div> -->
+
+      <% @bookings.each do |b| %>
+
+      <div class="row booking-body">
+        <div class="col col-xs-12 booking-col">
+          <div class="long-card">
+
+            <div class="book-id">
+              <p class="hd"> Booking Id </p>
+              <p> <%= b.id %> </p>
+            </div>
+            <div class= "book-name">
+              <p class="hd"> Boat Name</p>
+              <p><%= b.boat.name %> </p>
+            </div>
+            <div class= "book-start">
+              <p class="hd"> Start time</p>
+              <p><%= b.start_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+            </div>
+            <div class= "book-end">
+              <p class="hd"> End time</p>
+              <p><%= b.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+            </div>
+            <div class= "book-price">
+              <p class="hd"> Price (€)</p>
+              <p><%= b.boat.price_per_hour %> </p>
+            </div>
+            <div class= "book-price">
+              <p class="hd"> Status </p>
+              <p><%= b.status %> </p>
+            </div>
+            <div>
+              <%= link_to "Update", edit_booking_path(b), class:"book-btn"%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <%end %>
+
+      </div>
+    </div>
+<!--   </div> -->
+</div>
