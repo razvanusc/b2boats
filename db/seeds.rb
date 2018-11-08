@@ -42,6 +42,8 @@ boat = Boat.create!(
   hours: 2,
   capacity: 200,
   has_license: false,
+  category: "Party boat",
+  rating: 5,
   user_id: user1.id)
 
 
@@ -56,6 +58,8 @@ extra_boat = Boat.create!(
   hours: 1,
   capacity: 6,
   has_license: false,
+  category: "Luxury boat",
+  rating: 4,
   user_id: user2.id)
 
 
@@ -71,6 +75,8 @@ boat2 = Boat.create!(
   hours: 2,
   capacity: 8,
   has_license: true,
+  category: "Family boat",
+  rating: 3,
   user_id: user3.id)
 
 
@@ -103,6 +109,8 @@ boat4 = Boat.create!(
   hours: 5,
   capacity: 20,
   has_license: false,
+  category: "Party boat",
+  rating: 4,
   user_id: user5.id)
 
 boat5 = Boat.create!(
@@ -116,6 +124,8 @@ boat5 = Boat.create!(
   hours: 5,
   capacity: 20,
   has_license: false,
+  category: "Small boat",
+  rating: 2,
   user_id: user6.id)
 
 
