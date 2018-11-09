@@ -7,7 +7,7 @@
       <div class="name-image" >
       <h2 class="boat-name" ><%= @boat.name %></h2>
       <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
-      <p style="margin-top: 20px"><%= cl_image_tag(@boat.user.photo.present? ? @boat.photo : "avatar_placeholder", height: 100, width: 100, class: "img-circle") %></p>
+      <p style="margin-top: 20px"><%= cl_image_tag(@boat.user.photo.present? ? @boat.user.photo : "avatar_placeholder", height: 100, width: 100, class: "img-circle") %></p>
       <p>Owner: <span class="hd"><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></span></p>
       </div>
       <div>
