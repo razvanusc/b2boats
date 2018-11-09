@@ -1,18 +1,20 @@
-<div class="card"
-  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(boat.photo.present? ? boat.photo : "boat_placeholder") %>')">
-  <div class="card-category">
-    <%= boat.category %>
-    <p><%= boat.name %></p>
-  </div>
-  <div class="card-description">
-    <% boat.rating.times do%>
-      <i class="fas fa-star star-orange"></i>
-    <% end %>
-    <% (5 - boat.rating).times do %>
-      <i class="fas fa-star star-grey"></i>
-    <% end %>
-  </div>
-  <div class="card-cost">
-    <strong><p>€<%= boat.price_per_hour %></p></strong>
+<div class= "card-link">
+  <div class="card"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(boat.photo.present? ? boat.photo : "boat_placeholder") %>')">
+    <div class="card-category">
+      <%= boat.category %>
+      <p><%= boat.name %></p>
+    </div>
+    <div class="card-description">
+      <% boat.rating.times do%>
+        <i class="fas fa-star star-orange"></i>
+      <% end %>
+      <% (5 - boat.rating).times do %>
+        <i class="fas fa-star star-grey"></i>
+      <% end %>
+    </div>
+    <div class="card-cost">
+      <strong><p>€<%= boat.price_per_hour %></p></strong>
+    </div>
   </div>
 </div>
