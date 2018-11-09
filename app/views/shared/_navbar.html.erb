@@ -52,7 +52,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
     <!--     <li><a href="#">Contact</a></li>
         <li><a href="#">About</a></li> -->
-        <li><%= link_to "My profile", user_path(current_user)%></li>
+        <li><%= link_to "My profile", user_path(:id)%></li>
         <li> <%= link_to "All boats", boats_path %> </li>
       </ul>
     </div>
