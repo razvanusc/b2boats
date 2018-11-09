@@ -6,13 +6,8 @@
   color: #F4F4F4;
   position: relative;
   margin: 10px;
-}
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #888888;
 }
 .card-category {
   position: absolute;
@@ -20,6 +15,10 @@
   left: 10px;
   font-size: 15px;
   text-transform: uppercase;
+}
+.card-category p {
+  padding-top: 5px;
+  font-size: 25px;
 }
 .card-description {
   position: absolute;
@@ -35,6 +34,12 @@
   font-weight: lighter;
 }
 
+.card-cost p {
+  position: absolute;
+  left: 85%;
+  top: 81%;
+}
+
  .card-link:hover {
   opacity: 0.8;
 }
@@ -48,3 +53,5 @@
   color: #B6B8B9;
   font-size: 12px;
 }
+
+
