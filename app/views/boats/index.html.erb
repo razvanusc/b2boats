@@ -1,10 +1,13 @@
 <h2>List of Boats</h2>
+
 <div class="container">
  <div class="row">
    <% @boats.each do |b| %>
-     <div class="col-xs-12 col-md-4">
-       <%= render "shared/boatcard", boat: b %>
-     </div>
+   <div class="col-xs-12 col-md-4">
+      <%= link_to boat_path(b) do %>
+     <%= render "shared/boatcard", boat: b %>
+     <% end %>
+   </div>
    <% end %>
  </div>
 </div>

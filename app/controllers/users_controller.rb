@@ -6,8 +6,10 @@ class UsersController < ApplicationController
     if params[:show]
       @bookings = @user.bookings.where(status: params[:show])
     else
-      @bookings =@user.bookings
+      @bookings = @user.bookings
     end
+    
+    authorize @user
 
     @bookings_for_boats = @user.bookings_for_boats
 
@@ -15,10 +17,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def update
     @user = User.new(user_params)
+    authorize @user
     if @user.save
       redirect user_path(@user)
     else
@@ -28,6 +32,7 @@ class UsersController < ApplicationController
 
   def destroy
    @user = User.find(params[:id])
+   authorize @user
    @user.destroy
    redirect_to boats_path
  end

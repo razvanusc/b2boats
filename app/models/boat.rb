@@ -10,7 +10,7 @@ class Boat < ApplicationRecord
   validates :price_per_hour, presence:true
   validates :hours, presence:true
   validates :capacity, presence:true
-  validates :category, presence:true
+  # validates :category, presence:true
   validates_inclusion_of :has_license, in: [true, false]
 
   geocoded_by :location

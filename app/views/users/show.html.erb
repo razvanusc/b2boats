@@ -1,7 +1,7 @@
  <h2 class="h2-user">Hello <%= @user.first_name%>!</h2>
   <div class="main-container user-bin">
     <div id="profile-bin">
-      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm'/>
+      <%= cl_image_tag(current_user.photo.present? ? current_user.photo : "avatar_placeholder", height: 300, width: 300, crop: :fill) %>
       <p>First name: <%= @user.first_name%></p>
       <p>Last name: <%= @user.last_name%></p>
       <p>Email: <%= @user.email%></p>
