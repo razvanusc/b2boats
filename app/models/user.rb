@@ -9,8 +9,9 @@ class User < ApplicationRecord
 
   def bookings_for_boats
     #find all the boats and the bookings belonging to the boats
-    boats.map do | boat|
-      boat.bookings
-    end.flatten
+    # boats.map do | boat|
+    #   boat.bookings
+    # end.flatten
+    Booking.all.joins(:boat).where('boats.user_id = ?', id)
   end
 end

@@ -20,4 +20,8 @@ class BookingPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def confirm?
+    record.boat.user == user
+  end
 end

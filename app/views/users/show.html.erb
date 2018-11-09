@@ -17,7 +17,7 @@
     <div class="container booking-container">
       <div class="row">
         <div class="col-xs-12 booking-title">
-          <h3 class="show-h2">Your <strong>Boat</strong> Bookings</h3>
+          <h3 class="show-h2">Your Bookings</h3>
         </div>
       </div>
       <div class="row booking-header">
@@ -39,9 +39,8 @@
           <div class="long-card">
 
             <div class="book-id">
-              <p class="hd"> Owner</p>
-              <p> <%= b.user.first_name %> </p>
-              <p> <%= b.user.last_name %> </p>
+              <p class="hd">Name</p>
+              <p> <%= b.user.first_name[0]%>. <%= b.user.last_name %> </p>
             </div>
             <div class= "book-name">
               <p class="hd"> Boat Name</p>
@@ -70,7 +69,7 @@
 
        <div class="row">
         <div class="col-xs-12 booking-title">
-          <h3 class="show-h2">Your Bookings</h3>
+          <h3 class="show-h2">Your <strong>Boat</strong> Bookings</h3>
         </div>
       </div>
       <div class="row booking-header">
@@ -92,9 +91,8 @@
           <div class="long-card">
 
             <div class="book-id">
-              <p class="hd"> Owner</p>
-              <p> <%= b.user.first_name %> </p>
-              <p> <%= b.user.last_name %> </p>
+              <p class="hd">Name</p>
+              <p> <%= b.user.first_name[0]%>. <%= b.user.last_name %> </p>
             </div>
             <div class= "book-name">
               <p class="hd"> Boat Name</p>
@@ -113,7 +111,9 @@
               <p><%= b.boat.price_per_hour %> </p>
             </div>
             <div>
-              <%= link_to "Update", edit_booking_path(b), class:"book-btn"%>
+              <% if b.status != "confirmed" %>
+                <%= link_to "Confirm", confirm_path(b), method: :patch, class:"book-btn"%>
+              <%end %>
             </div>
           </div>
         </div>

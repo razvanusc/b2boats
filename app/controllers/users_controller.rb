@@ -3,16 +3,19 @@ class UsersController < ApplicationController
   def show
     #this displays the bookings for the user
     @user = User.find(params[:id])
+
     if params[:show]
       @bookings = @user.bookings.where(status: params[:show])
     else
       @bookings = @user.bookings
     end
-
     authorize @user
 
-    @bookings_for_boats = @user.bookings_for_boats
-
+    if params[:show]
+      @bookings_for_boats = @user.bookings_for_boats.where(status: params[:show])
+    else
+      @bookings_for_boats = @user.bookings_for_boats
+    end
   end
 
   def edit
