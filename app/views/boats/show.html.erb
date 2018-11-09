@@ -58,7 +58,9 @@
         <% end %>
       </ul>
       <div class="btn-details">
+        <% if @boat.user != current_user %>
         <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
+        <% end %>
       </div>
     </div>
 
@@ -78,8 +80,11 @@
         </li>
         <% end %>
       </ul>
+
       <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
     </div>
+
+
   </div>
 </div>
 <div
