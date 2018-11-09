@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
 
   def show
+    #this displays the bookings for the user
     @user = User.find(params[:id])
     if params[:show]
       @bookings = @user.bookings.where(status: params[:show])
     else
       @bookings =@user.bookings
     end
+
+    @bookings_for_boats = @user.bookings_for_boats
+
   end
 
   def edit

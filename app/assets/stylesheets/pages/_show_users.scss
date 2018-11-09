@@ -1,23 +1,21 @@
 
-
-.h2-user {
-  margin: 0 0 20px 0;
-  padding: 40px;
-  height: 40px;
-  text-align: left;
-}
-
-.show-h3 {
-  font-weight: bolder;
-  font-size: 18;
-}
-
 .main-container {
   display: flex;
-  height: 80vh;
+  height: 100vh;
   width: 1000px;
   margin: 30px auto;
   padding-bottom: 30px;
+
+}
+
+.booking-container {
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+  margin-left: 20px;
+  height: 100vh;
+  margin-bottom: 20px;
+  overflow: scroll;
 }
 
 #profile-bin {
@@ -31,6 +29,19 @@
   background-color: white;
   box-shadow: 1px 1px 10px #888888;
   border-radius: 10px;
+  // height: 80vh;
+}
+
+.h2-user {
+  margin: 0 0 20px 0;
+  padding: 40px;
+  height: 40px;
+  text-align: left;
+}
+
+.show-h3 {
+  font-weight: bolder;
+  font-size: 18;
 }
 
 #profile-bin img {
@@ -71,13 +82,6 @@
 .status-btn:hover {
   color: #025578;
   text-decoration: none;
-}
-.booking-bin {
-  background-color: white;
-  box-shadow: 1px 1px 10px #888888;
-  border-radius: 10px;
-  margin-left: 20px;
-  // margin-bottom: 20px;
 }
 
 .booking-header {

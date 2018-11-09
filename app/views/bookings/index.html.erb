@@ -3,23 +3,8 @@
 <!--   <div class="application-controller"> -->
     <div class="container">
 
-    <div class="container booking-bin">
-    <!--   <div class="row">
-        <div class="col-xs-12 booking-title">
-          <h3 class="show-h2">All Bookings</h3>
-        </div>
-      </div> -->
-  <!--     <div class="row booking-header">
-        <div class="col col-xs-4">
-          <%= link_to "Pending", user_path(current_user, show:"pending"), class: "status-btn" %>
-        </div>
-        <div class="col col-xs-4">
-            <%= link_to "Confirmed", user_path(current_user, show:"confirmed"), class: "status-btn" %>
-        </div>
-        <div class="col col-xs-4">
-            <%= link_to "Cancelled", user_path(current_user, show:"cancelled"), class: "status-btn" %>
-        </div>
-      </div> -->
+    <div class="container booking-container">
+
 
       <% @bookings.each do |b| %>
 
@@ -28,8 +13,8 @@
           <div class="long-card">
 
             <div class="book-id">
-              <p class="hd"> Booking Id </p>
-              <p> <%= b.id %> </p>
+              <p class="hd"> Owner </p>
+              <p> <%= b.user.first_name[0] %>. <%= b.user.last_name %> </p>
             </div>
             <div class= "book-name">
               <p class="hd"> Boat Name</p>
