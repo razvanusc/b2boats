@@ -5,7 +5,6 @@
   width: 1000px;
   margin: 30px auto;
   padding-bottom: 30px;
-
 }
 
 .booking-container {
@@ -20,7 +19,7 @@
 
 #profile-bin {
   flex: 0 0 250px;
-  // height: 100vh;
+  height: 100vh;
   position: sticky !important; /* !important to override Gmaps inline CSS */
   // top: 0 !important;
   text-align: center;
