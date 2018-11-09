@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2018_11_08_121434) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.string "category"
     t.integer "rating"
+    t.string "photo"
     t.float "latitude"
     t.float "longitude"
     t.string "address"

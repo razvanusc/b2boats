@@ -1,23 +1,24 @@
-<div class="wrapper-light">
-  <h2>Hello <%= @user.first_name%>!</h2>
-  <div class="main-container grid-container user-bin">
+ <h2 class="h2-user">Hello <%= @user.first_name%>!</h2>
+  <div class="main-container user-bin">
     <div id="profile-bin">
       <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm'/>
       <p>First name: <%= @user.first_name%></p>
       <p>Last name: <%= @user.last_name%></p>
       <p>Email: <%= @user.email%></p>
       <% @user.boats.each do |boat| %>
-      <p>Boat id: <%= boat.id %> Boat name: <%= boat.name %> </p>
+      <p>Boat: <strong> <%= link_to  boat.name, boat_path(boat) %> </strong> </p>
+
       <% end %>
       <p><%= link_to "Back to boats",  boats_path, class: "booking-btn"%> </p>
       <p><%= link_to "Add a boat",  new_boat_path, class: "booking-btn"%> </p>
-      <p><%= link_to "Edit user",  edit_user_path(@user), class: "booking-btn"%> </p>
-      <p><%= link_to "Delete this user", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}, class: "booking-btn"%></p>
+      <p><%= link_to "Edit profile",  edit_user_path(@user), class: "booking-btn"%> </p>
+      <p><%= link_to "Delete account", user_path(@user), method: :delete, data: { confirm: "Are you sure?"}, class: "booking-btn"%></p>
     </div>
+
     <div class="container booking-bin">
       <div class="row">
         <div class="col-xs-12 booking-title">
-          <h3>Your Bookings</h3>
+          <h3 class="show-h2">Your Bookings</h3>
         </div>
       </div>
       <div class="row booking-header">
@@ -34,7 +35,7 @@
 
       <% @bookings.each do |b| %>
 
-      <div class="row booking-body space">
+      <div class="row booking-body">
         <div class="col col-xs-12 booking-col">
           <div class="long-card">
 
@@ -69,7 +70,5 @@
 
     </div>
   </div>
-</div>
-
 
 

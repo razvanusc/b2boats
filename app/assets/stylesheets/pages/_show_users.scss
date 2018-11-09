@@ -1,24 +1,23 @@
-.wrapper-light {
-    background-color: #F2F2F2;
-   -moz-box-shadow:    inset 0 0 10px #908989;
-   -webkit-box-shadow: inset 0 0 10px #908989;
-   box-shadow:         inset 0 0 10px #908989;
-}
 
-h2 {
+
+.h2-user {
   margin: 0 0 20px 0;
-  padding-top: 20px;
+  padding: 40px;
   height: 40px;
+  text-align: left;
 }
 
-h3 {
+.show-h3 {
   font-weight: bolder;
+  font-size: 18;
 }
 
 .main-container {
   display: flex;
+  height: 80vh;
   width: 1000px;
-  margin: 0 auto;
+  margin: 30px auto;
+  padding-bottom: 30px;
 }
 
 #profile-bin {
@@ -28,9 +27,11 @@ h3 {
   // top: 0 !important;
   text-align: center;
   // border: 1px solid #e2e2e2;
-  margin: 20px;
+  // margin: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
 }
-
 
 #profile-bin img {
   padding: 20px 15px;
@@ -71,6 +72,14 @@ h3 {
   color: #025578;
   text-decoration: none;
 }
+.booking-bin {
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+  margin-left: 20px;
+  // margin-bottom: 20px;
+}
+
 .booking-header {
   text-align: center;
   // font-weight: bold;
