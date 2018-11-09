@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     else
       @bookings = @user.bookings
     end
-    
+
     authorize @user
 
     @bookings_for_boats = @user.bookings_for_boats
@@ -21,21 +21,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.new(user_params)
+    @user = User.find(params[:id])
+    @user.update(user_params)
     authorize @user
     if @user.save
-      redirect user_path(@user)
+      redirect_to user_path(@user)
     else
       render :show
     end
   end
-
-  def destroy
-   @user = User.find(params[:id])
-   authorize @user
-   @user.destroy
-   redirect_to boats_path
- end
 
   private
 
