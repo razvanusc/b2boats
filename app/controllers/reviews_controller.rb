@@ -11,11 +11,15 @@ class ReviewsController < ApplicationController
   def new
     @boat = Boat.find(params[:boat_id])
     @review = Review.new
+    authorize @review
   end
 
   def create
+    @user = current_user
     @boat = Boat.find(params[:boat_id])
     @review = Review.new(review_params)
+    authorize @review
+    @review.user = @user
     @review.boat = @boat
     if @review.save
       redirect_to boat_path(@boat)
@@ -27,6 +31,7 @@ class ReviewsController < ApplicationController
   def destroy
     @boat = Boat.find(params[:boat_id])
     @review = Review.find(params[:id])
+    authorize @review
     @review.destroy
     redirect_to boat_path(@boat)
   end

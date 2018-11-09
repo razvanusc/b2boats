@@ -10,7 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
+      <% if policy(Boat).create? %>
       <%= link_to "Add your boat", new_boat_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
       <%= link_to "All boats", boats_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->

@@ -1,15 +1,20 @@
 class BoatsController < ApplicationController
+
   def index
     if user_id = params[:user_id]
       @user = User.find(user_id)
-      @boats = @user.boats
+      @boats = policy_scope(Boat).where(user: @user)
     else
-      @boats = Boat.all
+      @boats = policy_scope(Boat)
     end
+
   end
 
   def show
+
     @boat = Boat.find(params[:id])
+
+    authorize @boat
 
     @boat.geocode
 
@@ -23,13 +28,13 @@ class BoatsController < ApplicationController
 
   def new
     @boat = Boat.new
+    authorize @boat
   end
 
   def create
     @boat = Boat.new(boat_params)
-
     @boat.user = current_user
-
+    authorize @boat
 
     if @boat.save
       redirect_to boats_path
@@ -40,16 +45,19 @@ class BoatsController < ApplicationController
 
   def edit
     @boat = Boat.find(params[:id])
+    authorize @boat
   end
 
   def update
     @boat = Boat.find(params[:id])
+    authorize @boat
     @boat.update(boat_params)
     redirect_to boat_path(@boat)
   end
 
   def destroy
     @boat = Boat.find(params[:id])
+    authorize @boat
     @boat.destroy
     redirect_to boats_path
   end

@@ -3,7 +3,7 @@
     <div class="name-image" >
     <p class="boat-name" ><%= @boat.name %></p>
     <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
-    <p><%= cl_image_tag @boat.user.photo, height: 100, width: 100, class: "img-circle" %></p>
+    <p><%= cl_image_tag(@boat.user.photo.present? ? @boat.user.photo : "avatar_placeholder", height: 100, width: 100, class: "img-circle") %></p>
     <p><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></p>
     </div>
   </div>
@@ -27,12 +27,15 @@
     </ul>
 
     <!-- Boat Links (edit, delete, index page) -->
-
+    <% if policy(@boat).edit? %>
     <p class="boat-p"><%= link_to "Edit", edit_boat_path(@boat), class: "boat-btn"%></p>
+    <% end %>
     <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
+    <% if policy(@boat).destroy? %>
     <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
     method: :delete,
     data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
+    <% end %>
   </p>
   </div>
   <div class="grid-item4 grid-item">
@@ -61,9 +64,12 @@
     <ul>
       <% @boat.reviews.each do |review| %>
       <li>
+        <% if policy(review).destroy? %>
         <%= review.title %> <%= link_to "", boat_review_path(@boat, review),
         method: :delete,
-        data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %><br>
+        data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+        <% end %>
+        <br>
         <%= review.content %>
         <%= review.rating %>
       </li>
