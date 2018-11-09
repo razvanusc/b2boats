@@ -5,10 +5,10 @@
 
     <div class="grid-item1 grid-item">
       <div class="name-image" >
-        <h2 class="boat-name" ><%= @boat.name %></h2>
-        <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
-        <p><%= cl_image_tag @boat.user.photo, height: 100, width: 100, class: "img-circle" %></p>
-        <p>Owner: <span class="hd"><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></span></p>
+      <h2 class="boat-name" ><%= @boat.name %></h2>
+      <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
+      <p style="margin-top: 20px"><%= cl_image_tag(@boat.user.photo.present? ? @boat.photo : "avatar_placeholder", height: 100, width: 100, class: "img-circle") %></p>
+      <p>Owner: <span class="hd"><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></span></p>
       </div>
       <div>
         <ul>
@@ -21,37 +21,32 @@
             <p><strong>License needed?</strong>
               <%if @boat.has_license %>
               <%= "Yes" %>
-              <% else %>
+                <% else %>
               <%= "No" %>
-              <% end  %>
+                <% end  %>
             </p>
           </li>
         </ul>
-
-        <!-- Boat Links (edit, delete, index page) -->
-        
-        <% if policy(@boat).edit? %>
-        <p class="boat-p"><%= link_to "Edit Boat", edit_boat_path(@boat), class: "boat-btn"%></p>
-        <% end %>
-        <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
-        <% if policy(@boat).destroy? %>
-        <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
-        method: :delete,
-        data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
-        <% end %>
-      </p>
-    </div>
-  </div>
-
-      <!-- Boat Description -->
-
-      <div class="grid-item2 grid-item">
-        <p><strong>Description</strong>: <%= @boat.description %></p>
+      <% if policy(@boat).edit? %>
+      <p class="boat-p"><%= link_to "Edit Boat", edit_boat_path(@boat), class: "boat-btn"%></p>
+      <% end %>
+      <% if policy(@boat).destroy? %>
+      <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
+      method: :delete,
+      data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
+      <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
+      <% end %>
       </div>
+    </div>
 
-      <!-- Booking Details -->
-  
-  
+    <!-- Boat Description -->
+
+    <div class="grid-item2 grid-item">
+      <p><strong>Description</strong>: <%= @boat.description %></p>
+    </div>
+
+     <!-- Booking Details -->
+
     <div class="grid-item4 grid-item">
       <h2 class="book-details show-title">Bookings</h2>
       <ul>
@@ -69,29 +64,36 @@
         <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
         <% end %>
       </div>
-
-      <!-- Boat Reviews -->
-      <div class="grid-item5 grid-item">
-        <h2 class="show-title">Boat reviews</h2>
-        <ul>
-          <% @boat.reviews.each do |review| %>
-          <li>
-            <% if policy(review).destroy? %>
-            <strong><%= review.title %></strong> <%= link_to "", boat_review_path(@boat, review),
-            method: :delete,
-            data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
-            <% end %>
-            <p><em>"<%= review.content %>"</em></p>
-            <p> Rating: <%= review.rating %> </p>
-            <p> *** </p>
-          </li>
-          <% end %>
-        </ul>
-        <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
     </div>
 
+    <!-- Boat Reviews -->
+
+    <div class="grid-item5 grid-item">
+      <h2 class="show-title">Reviews</h2>
+      <ul>
+        <% @boat.reviews.each do |review| %>
+        <li>
+          <strong><%= review.title %> </strong>
+          <% if policy(review).destroy? %>
+          <%= link_to "", boat_review_path(@boat, review),
+          method: :delete,
+          data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+          <% end %>
+          <br>
+          <p><em>"<%= review.content %>"</em></p>
+          <p> Rating: <%= review.rating %> </p>
+          <p> *** </p>
+        </li>
+        <% end %>
+      </ul>
+
+      <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
+    </div>
+
+
   </div>
-  <div
+</div>
+<div
   id="map"
   style="width: 100%;
   height: 600px;"
