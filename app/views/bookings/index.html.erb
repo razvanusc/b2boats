@@ -3,8 +3,7 @@
 <!--   <div class="application-controller"> -->
     <div class="container">
 
-    <div class="container booking-bin">
-
+    <div class="container booking-container">
 
       <% @bookings.each do |b| %>
 
@@ -13,8 +12,8 @@
           <div class="long-card">
 
             <div class="book-id">
-              <p class="hd"> Booking Id </p>
-              <p> <%= b.id %> </p>
+              <p class="hd"> Owner </p>
+              <p> <%= b.user.first_name[0] %>. <%= b.user.last_name %> </p>
             </div>
             <div class= "book-name">
               <p class="hd"> Boat Name</p>

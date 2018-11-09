@@ -29,6 +29,7 @@
         </ul>
 
         <!-- Boat Links (edit, delete, index page) -->
+        
         <% if policy(@boat).edit? %>
         <p class="boat-p"><%= link_to "Edit Boat", edit_boat_path(@boat), class: "boat-btn"%></p>
         <% end %>
@@ -49,22 +50,24 @@
       </div>
 
       <!-- Booking Details -->
-
-      <div class="grid-item4 grid-item">
-        <h2 class="book-details show-title">Bookings</h2>
-        <ul>
-          <% @boat.bookings.each do |booking| %>
-          <li>
-            <p> Status: <span class="status"> <%= booking.status %> </span> </p>
-            <p> Start: <%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></p>
-            <p> End: <%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
-            <p> *** </p>
-          </li>
-          <% end %>
-        </ul>
-        <div class="btn-details">
-          <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
-        </div>
+  
+  
+    <div class="grid-item4 grid-item">
+      <h2 class="book-details show-title">Bookings</h2>
+      <ul>
+        <% @boat.bookings.each do |booking| %>
+        <li>
+          <p> Status: <span class="status"> <%= booking.status %> </span> </p>
+          <p> Start: <%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></p>
+          <p> End: <%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+          <p> *** </p>
+        </li>
+        <% end %>
+      </ul>
+      <div class="btn-details">
+        <% if @boat.user != current_user %>
+        <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
+        <% end %>
       </div>
 
       <!-- Boat Reviews -->
@@ -85,10 +88,8 @@
           <% end %>
         </ul>
         <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
-      </div>
-
-
     </div>
+
   </div>
   <div
   id="map"
