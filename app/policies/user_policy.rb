@@ -1,8 +1,12 @@
-class ReviewPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
+  end
+
+  def show?
+    true
   end
 
   def create?
@@ -10,10 +14,10 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record == user
   end
 
   def destroy?
-    record.user == user
+    record == user
   end
 end

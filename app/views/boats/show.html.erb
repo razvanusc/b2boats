@@ -1,88 +1,99 @@
-<div class="grid-container">
-  <div class="grid-item1 grid-item">
-    <div class="name-image" >
-    <p class="boat-name" ><%= @boat.name %></p>
-    <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
-    <p><%= cl_image_tag(@boat.user.photo.present? ? @boat.user.photo : "avatar_placeholder", height: 100, width: 100, class: "img-circle") %></p>
-    <p><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></p>
-    </div>
-  </div>
+<div class= "wrapper-light">
+  <div class="grid-container">
 
-  <div class="grid-item2 grid-item">
-    <h3><strong>Description</strong>: <%= @boat.description %></h3>
-  </div>
+    <!-- Boat Details -->
 
-  <div class="grid-item3 grid-item">
-    <!-- Boat Description -->
-    <div class="details-title">
-    <h1 class="show-title">Boat details</h1>
-    </div>
-    <ul>
-      <li>
-        <p>Price per hour: <%= @boat.price_per_hour %></p>
-        <p>Rental hours: <%= @boat.hours %></p>
-        <p>Capacity: <%= @boat.capacity %></p>
-        <p>License needed? <%= @boat.has_license %></p>
-      </li>
-    </ul>
+    <div class="grid-item1 grid-item">
+      <div class="name-image" >
+        <h2 class="boat-name" ><%= @boat.name %></h2>
+        <%= cl_image_tag(@boat.photo.present? ? @boat.photo : "boat_placeholder", height: 300, width: 400, crop: :fill ) %>
+        <p><%= cl_image_tag @boat.user.photo, height: 100, width: 100, class: "img-circle" %></p>
+        <p>Owner: <span class="hd"><%= @boat.user.first_name.present? ? @boat.user.first_name : @boat.user.email %></span></p>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <p><strong>Rating: </strong> <%= @boat.rating %> </p>
+            <p><strong>Category: </strong><%= @boat.category %></p>
+            <p><strong>Price per hour: </strong>  <%= @boat.price_per_hour %>€</p>
+            <p><strong>Rental hours: </strong> <%= @boat.hours %></p>
+            <p><strong>Capacity:</strong> <%= @boat.capacity %></p>
+            <p><strong>License needed?</strong>
+              <%if @boat.has_license %>
+              <%= "Yes" %>
+              <% else %>
+              <%= "No" %>
+              <% end  %>
+            </p>
+          </li>
+        </ul>
 
-    <!-- Boat Links (edit, delete, index page) -->
-    <% if policy(@boat).edit? %>
-    <p class="boat-p"><%= link_to "Edit", edit_boat_path(@boat), class: "boat-btn"%></p>
-    <% end %>
-    <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
-    <% if policy(@boat).destroy? %>
-    <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
-    method: :delete,
-    data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
-    <% end %>
-  </p>
-  </div>
-  <div class="grid-item4 grid-item">
-    <!-- Booking Details -->
-
-    <h1 class="book-details show-title">Booking details</h1>
-    <ul>
-      <% @boat.bookings.each do |booking| %>
-      <li>
-        <p> Status: <%= booking.status %> </p>
-
-        <p> Available from: <%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></p>
-
-        <p> Available until: <%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
-      </li>
-      <% end %>
-    </ul>
-    <div class="btn-details">
-      <p class="boat-p"><%= link_to "Edit", edit_booking_path(@boat.bookings), class: "boat-btn"%></p>
-      <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
-    </div>
-  </div>
-  <div class="grid-item5 grid-item">
-    <!-- Boat Reviews -->
-    <h1 class="show-title">Boat reviews</h1>
-    <ul>
-      <% @boat.reviews.each do |review| %>
-      <li>
-        <% if policy(review).destroy? %>
-        <%= review.title %> <%= link_to "", boat_review_path(@boat, review),
-        method: :delete,
-        data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+        <!-- Boat Links (edit, delete, index page) -->
+        <% if policy(@boat).edit? %>
+        <p class="boat-p"><%= link_to "Edit Boat", edit_boat_path(@boat), class: "boat-btn"%></p>
         <% end %>
-        <br>
-        <%= review.content %>
-        <%= review.rating %>
-      </li>
-      <% end %>
-    </ul>
-
-    <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
+        <p class="boat-p"><%= link_to "Back to list", boats_path, class: "boat-btn"%></p>
+        <% if policy(@boat).destroy? %>
+        <p class="boat-p"><%= link_to "Delete", boat_path(@boat),
+        method: :delete,
+        data: { confirm: "Are you sure?" }, class: "boat-btn"%></p>
+        <% end %>
+      </p>
+    </div>
   </div>
-</div>
 
-<div
+      <!-- Boat Description -->
+
+      <div class="grid-item2 grid-item">
+        <p><strong>Description</strong>: <%= @boat.description %></p>
+      </div>
+
+      <!-- Booking Details -->
+
+      <div class="grid-item4 grid-item">
+        <h2 class="book-details show-title">Bookings</h2>
+        <ul>
+          <% @boat.bookings.each do |booking| %>
+          <li>
+            <p> Status: <span class="status"> <%= booking.status %> </span> </p>
+            <p> Start: <%= booking.start_time.strftime("%Y-%m-%d (%H:%M)") %></p>
+            <p> End: <%= booking.end_time.strftime("%Y-%m-%d (%H:%M)") %> </p>
+            <p> *** </p>
+          </li>
+          <% end %>
+        </ul>
+        <div class="btn-details">
+          <p class="boat-p"><%= link_to "Book this boat", new_boat_booking_path(@boat), class: "boat-btn"%></p>
+        </div>
+      </div>
+
+      <!-- Boat Reviews -->
+      <div class="grid-item5 grid-item">
+        <h2 class="show-title">Boat reviews</h2>
+        <ul>
+          <% @boat.reviews.each do |review| %>
+          <li>
+            <% if policy(review).destroy? %>
+            <strong><%= review.title %></strong> <%= link_to "", boat_review_path(@boat, review),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, class: "far fa-trash-alt" %>
+            <% end %>
+            <p><em>"<%= review.content %>"</em></p>
+            <p> Rating: <%= review.rating %> </p>
+            <p> *** </p>
+          </li>
+          <% end %>
+        </ul>
+        <p class="boat-p"><%= link_to "Add a review", new_boat_review_path(@boat), class: "boat-btn"%></p>
+      </div>
+
+
+    </div>
+  </div>
+  <div
   id="map"
   style="width: 100%;
   height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-></div>
+  data-markers="<%= @markers.to_json %>">
+</div>
+

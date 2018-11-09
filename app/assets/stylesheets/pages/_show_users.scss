@@ -1,0 +1,98 @@
+
+
+.h2-user {
+  margin: 0 0 20px 0;
+  padding: 40px;
+  height: 40px;
+  text-align: left;
+}
+
+.show-h3 {
+  font-weight: bolder;
+  font-size: 18;
+}
+
+.main-container {
+  display: flex;
+  height: 80vh;
+  width: 1000px;
+  margin: 30px auto;
+  padding-bottom: 30px;
+}
+
+#profile-bin {
+  flex: 0 0 250px;
+  // height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  // top: 0 !important;
+  text-align: center;
+  // border: 1px solid #e2e2e2;
+  // margin: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+}
+
+#profile-bin img {
+  padding: 20px 15px;
+}
+
+#profile-bin a {
+  text-decoration: none !important;
+  color:  #01B6CA;
+}
+
+.boat-btn {
+  color: white;
+  background-color: #01B6CA;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  margin: 5px 15px;
+}
+
+.boat-btn:hover {
+  color: #025578;
+  text-decoration: none;
+}
+
+.status-btn {
+  color: white;
+  background-color: #01B6CA;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  margin: 5px 15px;
+  width: 100%;
+}
+
+.status-btn:hover {
+  color: #025578;
+  text-decoration: none;
+}
+.booking-bin {
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+  margin-left: 20px;
+  // margin-bottom: 20px;
+}
+
+.booking-header {
+  text-align: center;
+  // font-weight: bold;
+  // background-color: #01B6CA;
+  margin: 20px;
+  // border-left: 1 solid  #e2e2e2;
+  padding: 0;
+}
+
+.booking-body{
+margin-top: 30px;
+}
+// .active {
+//   background-color: #01535C;
+//   color: white;
+// }

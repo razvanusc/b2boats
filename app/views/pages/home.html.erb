@@ -6,7 +6,7 @@
    <% @boats.each do |b| %>
      <div class="col-xs-12 col-md-4">
        <%= link_to boat_path(b) do %>
-       <%= render "shared/card", boat: b %>
+       <%= render "shared/boatcard", boat: b %>
        <% end %>
      </div>
    <% end %>

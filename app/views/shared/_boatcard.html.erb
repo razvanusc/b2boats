@@ -2,6 +2,11 @@
   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(boat.photo.present? ? boat.photo : "boat_placeholder") %>')">
   <div class="card-category"><%= boat.name %></div>
   <div class="card-description">
-    <h2><%= boat.name %></h2>
+    <%= boat.rating.times do%>
+      <i class="fas fa-star star-orange"></i>
+    <% end %>
+    <% (5 - boat.rating).times do %>
+      <i class="fas fa-star star-grey"></i>
+    <% end %>
   </div>
 </div>
