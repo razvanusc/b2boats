@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     @boat = Boat.find(params[:boat_id])
 
     if @boat.user == current_user
-      raise "Not allowed your own boat"
+      raise "Not allowed to rent your own boat"
     end
 
     @booking = Booking.new(booking_params)
@@ -33,6 +33,13 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def confirm
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update! status: "confirmed"
+    redirect_to user_path(current_user)
   end
 
   def edit
