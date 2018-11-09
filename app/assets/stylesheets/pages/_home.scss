@@ -1,8 +1,37 @@
 // Specific CSS for your home-page
+body {
+  margin: 0;
+}
+
 h2 {
   text-align: center;
 }
 
-.bottom-padding {
-  padding-bottom: 25px;
+// .bottom-padding {
+//   padding-bottom: 25px;
+// }
+.container {
+  // background-color: green;
+  margin: 0 auto;
+}
+
+.home-container {
+  // display: flex;
+  height: 100vh;
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.home-content {
+  width: 1000px;
+  background-color: white;
+  box-shadow: 1px 1px 10px #888888;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 15px;
+  height: 40vh;
+  margin-bottom: 20px;
+  display: inline-block;
+  padding: 30px;
 }
